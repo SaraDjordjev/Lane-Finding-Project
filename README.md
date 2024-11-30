@@ -88,8 +88,7 @@ To confirm the transformation region, the function draws the source points on th
 image_with_points = cv.polylines(binary_image.copy(), [np.int32(src_points)], isClosed=True, color=255, thickness=3)
 
 Below is an example of the perspective transformation:
-
-
+![Wraped Image](examples/wraped_image.jpg)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
