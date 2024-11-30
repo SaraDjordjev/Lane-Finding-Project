@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 
-# Ucitavanje kalibracionih parametara
 calibration_data = np.load('camera_cal/calib.npz')
 camera_matrix = calibration_data['mtx']
 dist_coeffs = calibration_data['dist']
@@ -16,8 +15,8 @@ def process_hsv(image):
     hsv_image = cv.cvtColor(image, cv.COLOR_BGR2HSV)
 
     # Definisanje granica za boje
-    white_lower = np.array([0, 0, 200])
-    white_upper = np.array([255, 30, 255])
+    white_lower = np.array([0, 0, 180])
+    white_upper = np.array([255, 80, 255])
 
     yellow_lower = np.array([15, 90, 90])
     yellow_upper = np.array([35, 255, 255])
@@ -66,4 +65,3 @@ def perspective_transform(binary_image, src_points, dst_points):
     image_with_points = cv.polylines(binary_image.copy(), [np.int32(src_points)], isClosed=True, color=255, thickness=3)
 
     return warped_image, image_with_points, M, Minv
-
