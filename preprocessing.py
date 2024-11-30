@@ -61,7 +61,6 @@ def perspective_transform(binary_image, src_points, dst_points):
 
     warped_image = cv.warpPerspective(binary_image, M, (binary_image.shape[1], binary_image.shape[0]))
 
-    # Dodavanje vizualizacije tacaka
     image_with_points = cv.polylines(binary_image.copy(), [np.int32(src_points)], isClosed=True, color=255, thickness=3)
 
     return warped_image, image_with_points, M, Minv
