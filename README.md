@@ -62,7 +62,34 @@ Below is an example of the resulting binary image:
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-TODO: Add your text here!!!
+In the preprocessing.py script, the perspective_transform() function is used to apply a perspective transform. This technique is crucial for converting an image into a bird's-eye view, which is particularly useful in applications like lane detection.
+
+Steps of the Perspective Transform
+1. Source Points:
+The input src_points represent the coordinates of the region in the original image that you want to transform.
+
+2. Destination Points:
+The dst_points represent the coordinates of the desired rectangular region in the output image.
+
+3. Transformation Matrices:
+Using cv.getPerspectiveTransform(), the function calculates the transformation matrix M and its inverse Minv. These matrices map the source points to the destination points (and vice versa for the inverse matrix).
+
+M = cv.getPerspectiveTransform(src_points, dst_points)
+Minv = cv.getPerspectiveTransform(dst_points, src_points)
+
+5. Applying the Transform:
+The perspective transformation is applied to the binary input image using cv.warpPerspective(), which remaps the pixels according to the matrix M.
+
+warped_image = cv.warpPerspective(binary_image, M, (binary_image.shape[1], binary_image.shape[0]))
+
+6. Visualization of Points:
+To confirm the transformation region, the function draws the source points on the original binary image using cv.polylines().
+
+image_with_points = cv.polylines(binary_image.copy(), [np.int32(src_points)], isClosed=True, color=255, thickness=3)
+
+Below is an example of the perspective transformation:
+
+
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
