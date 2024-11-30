@@ -32,7 +32,7 @@ To validate the calibration, we applied the distortion correction to a test imag
 
 The preprocessing.py script includes multiple techniques for creating a thresholded binary image. These methods involve color transforms and edge detection, providing a robust way to isolate regions of interest in an image.
 
-Color Transform
+**Color Transform**
 In the process_hsv() function, we use the HSV color space to detect specific colors (yellow and white) in the image. This involves:
 
 1. Converting the input image to the HSV color space using cv.cvtColor(image, cv.COLOR_BGR2HSV).
@@ -44,16 +44,18 @@ In the process_hsv() function, we use the HSV color space to detect specific col
 5. Applying the combined mask to the original image using cv.bitwise_and().
    
 The output of this step includes both the masked image and the binary mask used for thresholding.
+```python
  masked_image, combined_mask = process_hsv(image)
-
-Edge Detection
+```
+**Edge Detection**
 In the process_canny() function, we use the Canny edge detection algorithm:
 
 1. The binary mask from process_hsv() is blurred using a Gaussian filter (cv.GaussianBlur()).
 2. Canny edge detection is applied using cv.Canny() with adjustable thresholds (thr1 and thr2). This isolates edges based on intensity gradients in the image.
+```python
 edges = process_canny(combined_mask, thr1, thr2)
-
-Result
+```
+**Result**
 The final binary image is a combination of the thresholding and edge detection steps, where regions corresponding to the desired colors (yellow and white) and strong edges are highlighted.
 
 Below is an example of the resulting binary image:
@@ -64,7 +66,7 @@ Below is an example of the resulting binary image:
 
 In the preprocessing.py script, the perspective_transform() function is used to apply a perspective transform. This technique is crucial for converting an image into a bird's-eye view, which is particularly useful in applications like lane detection.
 
-Steps of the Perspective Transform
+**Steps of the Perspective Transform**
 1. Source Points:
 The input src_points represent the coordinates of the region in the original image that you want to transform.
 
@@ -73,20 +75,21 @@ The dst_points represent the coordinates of the desired rectangular region in th
 
 3. Transformation Matrices:
 Using cv.getPerspectiveTransform(), the function calculates the transformation matrix M and its inverse Minv. These matrices map the source points to the destination points (and vice versa for the inverse matrix).
-
+```python
 M = cv.getPerspectiveTransform(src_points, dst_points)
 Minv = cv.getPerspectiveTransform(dst_points, src_points)
+```
 
 5. Applying the Transform:
 The perspective transformation is applied to the binary input image using cv.warpPerspective(), which remaps the pixels according to the matrix M.
-
+```python
 warped_image = cv.warpPerspective(binary_image, M, (binary_image.shape[1], binary_image.shape[0]))
-
+```
 6. Visualization of Points:
 To confirm the transformation region, the function draws the source points on the original binary image using cv.polylines().
-
+```python
 image_with_points = cv.polylines(binary_image.copy(), [np.int32(src_points)], isClosed=True, color=255, thickness=3)
-
+```
 Below is an example of the perspective transformation:
 ![Wraped Image](examples/warped_image.jpg)
 
