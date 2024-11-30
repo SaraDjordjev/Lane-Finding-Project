@@ -25,7 +25,8 @@ Once the object and image points are collected, we calibrate the camera using cv
 
 To validate the calibration, we applied the distortion correction to a test image using cv2.undistort(). We also optimized the camera matrix for a valid field of view using cv2.getOptimalNewCameraMatrix(). The result is a corrected, undistorted image, which was optionally cropped to display the valid region of the frame.
 
-### Pipeline (single images)
+![Original Image](camera_cal/calibration1.jpg)
+![Corrected Image](examples/calibration.jpg)
 
 #### 1. Provide an example of a distortion-corrected image.
 
