@@ -28,13 +28,24 @@ To validate the calibration, we applied the distortion correction to a test imag
 ![Original Image](camera_cal/calibration1.jpg)
 ![Corrected Image](examples/calibration.jpg)
 
-#### 1. Provide an example of a distortion-corrected image.
-
-TODO: Add your text here!!!
-
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-TODO: Add your text here!!!
+The preprocessing.py script includes multiple techniques for creating a thresholded binary image. These methods involve color transforms and edge detection, providing a robust way to isolate regions of interest in an image.
+
+Color Transform
+In the process_hsv() function, we use the HSV color space to detect specific colors (yellow and white) in the image. This involves:
+
+1. Converting the input image to the HSV color space using cv.cvtColor(image, cv.COLOR_BGR2HSV).
+2. Defining lower and upper bounds for the yellow and white colors.
+    White: [0, 0, 180] to [255, 80, 255]
+    Yellow: [15, 90, 90] to [35, 255, 255]
+3. Creating binary masks using cv.inRange(), which thresholds the image to include only the pixels within the defined color ranges.
+4. Combining the masks with a bitwise OR operation: cv.bitwise_or(white_mask, yellow_mask).
+5. Applying the combined mask to the original image using cv.bitwise_and().
+   
+The output of this step includes both the masked image and the binary mask used for thresholding.
+masked_image, combined_mask = process_hsv(image)
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
