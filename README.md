@@ -100,7 +100,7 @@ TODO: Add your text here!!!
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-TODO: Add your text here!!!
+![Output Image](examples/output_image.jpg)
 
 ### Pipeline (video)
 
