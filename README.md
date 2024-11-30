@@ -44,8 +44,21 @@ In the process_hsv() function, we use the HSV color space to detect specific col
 5. Applying the combined mask to the original image using cv.bitwise_and().
    
 The output of this step includes both the masked image and the binary mask used for thresholding.
-masked_image, combined_mask = process_hsv(image)
+ masked_image, combined_mask = process_hsv(image)
 
+Edge Detection
+In the process_canny() function, we use the Canny edge detection algorithm:
+
+1. The binary mask from process_hsv() is blurred using a Gaussian filter (cv.GaussianBlur()).
+2. Canny edge detection is applied using cv.Canny() with adjustable thresholds (thr1 and thr2). This isolates edges based on intensity gradients in the image.
+edges = process_canny(combined_mask, thr1, thr2)
+
+Result
+The final binary image is a combination of the thresholding and edge detection steps, where regions corresponding to the desired colors (yellow and white) and strong edges are highlighted.
+
+Below is an example of the resulting binary image:
+
+![Binary Image](examples/Binary.jpg)
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
