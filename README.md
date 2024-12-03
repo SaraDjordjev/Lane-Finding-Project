@@ -102,6 +102,7 @@ This project detects lane-line pixels in a warped binary image and fits their po
 **How Lane-Line Pixels Are Identified and Fit with a Polynomial**
 
 **1. Create a Histogram of the Warped Binary Image**
+
 The histogram is calculated using the bottom half of the warped binary image, summing pixel values along each column to identify the likely starting points of lane lines.
 ```python
 histogram = np.sum(warped_image[warped_image.shape[0] // 2:, :], axis=0)
