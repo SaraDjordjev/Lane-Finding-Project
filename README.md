@@ -110,7 +110,10 @@ plt.plot(histogram)
 ```
 The peak of the histogram indicates the base positions of the left and right lane lines.
 
+![Histogram Image](examples/Histogram.jpg)
+
 **2. Divide Image and Locate Lane Base Points**
+
 The midpoint of the histogram splits the image into left and right halves, and the peaks in each half determine the base positions of the lane lines.
 ```python
 midpoint = histogram.shape[0] // 2
@@ -118,9 +121,10 @@ leftx_base = np.argmax(histogram[:midpoint])
 rightx_base = np.argmax(histogram[midpoint:]) + midpoint
 ```
 **3. Sliding Window Search**
+
 A sliding window approach is used to iteratively search for lane pixels starting from the base points. For each window:
-    Pixels within the window are added to the lane line indices.
-    The window is moved vertically and adjusted horizontally based on the average x-coordinate of detected pixels.
+    - Pixels within the window are added to the lane line indices.
+    - The window is moved vertically and adjusted horizontally based on the average x-coordinate of detected pixels.
 ```python
 for window in range(n_windows):
     win_y_low = warped_image.shape[0] - (window + 1) * window_height
@@ -131,18 +135,21 @@ for window in range(n_windows):
     right_lane_inds.append(good_right_inds)
 ```
 **4. Extract Pixel Coordinates**
+
 The indices of detected pixels are used to extract their x and y coordinates.
 ```python
 leftx, lefty = nonzerox[left_lane_inds], nonzeroy[left_lane_inds]
 rightx, righty = nonzerox[right_lane_inds], nonzeroy[right_lane_inds]
 ```
 **5. Fit a Polynomial**
+
 A second-degree polynomial is fit to the detected pixels for both the left and right lanes using `numpy.polyfit`.
 ```python
 left_fit = np.polyfit(lefty, leftx, 2)
 right_fit = np.polyfit(righty, rightx, 2)
 ```
 **6. Generate Smooth Lane Curves**
+
 Y-coordinates are generated, and the corresponding x-coordinates are calculated using the polynomial coefficients.
 ```python
 ploty = np.linspace(0, warped_image.shape[0] - 1, warped_image.shape[0])
@@ -150,6 +157,7 @@ left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
 right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
 ```
 **7. Visualization**
+
 The detected lanes and their polynomial fits can be visualized using Matplotlib.
 ```python
 if visualize:
@@ -158,6 +166,7 @@ if visualize:
     plt.plot(right_fitx, ploty, color='yellow')
     plt.show()
 ```
+![Lane Detection](examples/LaneDetection.jpg)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
