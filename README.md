@@ -10,7 +10,17 @@ The goals / steps of this project are the following:
 * Determine the curvature of the lane and vehicle position with respect to center.
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+  
+"""
+1. **CameraCalibration.py**: Handles camera calibration and image undistortion.
+2. **preprocessing.py**: Performs preprocessing steps such as color filtering, edge detection, and perspective transformation.
+3. **lane_detection.py**: Detects lane pixels and fits a polynomial to represent the lanes.
+4. **lane_overlay.py**: Overlays the detected lanes back onto the original image.
 
+The `main.py` script integrates all these components to process videos or images, detecting lanes and 
+outputting the result as a video or image. The program supports both real-time lane visualization and 
+video processing, making it suitable for testing under various conditions.
+"""
 ### Camera Calibration
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
