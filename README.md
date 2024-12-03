@@ -1,6 +1,3 @@
-**PS. in progressing**
-
-
 **Lane Finding Project**
 
 The goals / steps of this project are the following:
@@ -185,7 +182,7 @@ if visualize:
 **1. Challenges Faced During Implementation**
 
 The main issues encountered during the development of the lane detection pipeline were:
-- Faint or Missing Lane Lines: Some test videos (challenge02 and challenge03) had lanes that were hard to detect.
+- Faint or Missing Lane Lines: Some test videos (`challenge02` and `challenge03`) had lanes that were hard to detect.
 - Lighting Changes: Sudden changes in lighting, such as shadows or reflections, affected the accuracy of lane detection.
 - Complex Roads: The pipeline struggled with sharp curves, merging lanes, or unusual road structures.
 
