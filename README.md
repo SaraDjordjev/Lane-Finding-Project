@@ -176,11 +176,29 @@ if visualize:
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-TODO: Add your text here!!!
+![Output Video](examples/output_video.avi)
 
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-TODO: Add your text here!!!
+**1. Challenges Faced During Implementation**
 
+The main issues encountered during the development of the lane detection pipeline were:
+- Faint or Missing Lane Lines: Some test videos (challenge02 and challenge03) had lanes that were hard to detect.
+- Lighting Changes: Sudden changes in lighting, such as shadows or reflections, affected the accuracy of lane detection.
+- Complex Roads: The pipeline struggled with sharp curves, merging lanes, or unusual road structures.
+
+**2. Pipeline Performance and Failures**
+
+The pipeline worked well on simpler videos (`project_video01`, `project_video02`, and `project_video03`) and moderately challenging ones (`challenge01`). However, it failed in more difficult scenarios (`challenge02` and `challenge03`) where conditions were too complex.
+
+**3. Improvements for Robustness**
+
+To make the pipeline more reliable, these improvements could help:
+- Use adaptive thresholding to handle lighting changes better.
+- Add tracking from previous frames to predict lane positions when detection is uncertain.
+- Explore machine learning techniques to improve lane detection in challenging conditions.
+  
+**4. Conclusion**
+The pipeline is effective for simple and moderately challenging conditions but needs further improvements to handle complex scenarios.
