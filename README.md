@@ -208,4 +208,5 @@ To make the project more reliable, these improvements could help:
 - Explore machine learning techniques to improve lane detection in challenging conditions.
   
 **4. Conclusion**
+
 The project is effective for simple and moderately challenging conditions but needs further improvements to handle complex scenarios.
