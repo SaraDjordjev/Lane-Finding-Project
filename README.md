@@ -191,21 +191,21 @@ if visualize:
 
 **1. Challenges Faced During Implementation**
 
-The main issues encountered during the development of the lane detection pipeline were:
+The main issues encountered during the development of the lane detection were:
 - Faint or Missing Lane Lines: Some test videos (`challenge02` and `challenge03`) had lanes that were hard to detect.
 - Lighting Changes: Sudden changes in lighting, such as shadows or reflections, affected the accuracy of lane detection.
 - Complex Roads: The pipeline struggled with sharp curves, merging lanes, or unusual road structures.
 
 **2. Pipeline Performance and Failures**
 
-The pipeline worked well on simpler videos (`project_video01`, `project_video02`, and `project_video03`) and moderately challenging ones (`challenge01`). However, it failed in more difficult scenarios (`challenge02` and `challenge03`) where conditions were too complex.
+The project worked well on simpler videos (`project_video01`, `project_video02`, and `project_video03`) and moderately challenging ones (`challenge01`). However, it failed in more difficult scenarios (`challenge02` and `challenge03`) where conditions were too complex.
 
 **3. Improvements for Robustness**
 
-To make the pipeline more reliable, these improvements could help:
+To make the project more reliable, these improvements could help:
 - Use adaptive thresholding to handle lighting changes better.
 - Add tracking from previous frames to predict lane positions when detection is uncertain.
 - Explore machine learning techniques to improve lane detection in challenging conditions.
   
 **4. Conclusion**
-The pipeline is effective for simple and moderately challenging conditions but needs further improvements to handle complex scenarios.
+The project is effective for simple and moderately challenging conditions but needs further improvements to handle complex scenarios.
